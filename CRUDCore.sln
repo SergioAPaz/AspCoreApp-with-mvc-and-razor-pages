@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDCore", "CRUDCore.csproj", "{6B0E3700-9905-4BDD-A800-9088689DCC32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B0E3700-9905-4BDD-A800-9088689DCC32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0E3700-9905-4BDD-A800-9088689DCC32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0E3700-9905-4BDD-A800-9088689DCC32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0E3700-9905-4BDD-A800-9088689DCC32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A736CCB0-00BD-4CAB-B183-381A59911C8E}
+	EndGlobalSection
+EndGlobal

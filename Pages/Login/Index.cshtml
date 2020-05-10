@@ -1,0 +1,37 @@
+﻿@page
+@model CRUDCore.Pages.Login.IndexModel
+@{
+    ViewData["Title"] = "DoctorApp";
+    @* Layout = "~/Views/Shared/_Layout.cshtml"; *@
+}
+    <head>
+        <link href="~/css/Login.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </head>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="~/images/user.png" style="width:250px;height:auto" />
+
+        </div>
+
+        <!-- Login Form -->
+        <form>
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>
+
