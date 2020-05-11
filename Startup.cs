@@ -30,6 +30,9 @@ namespace CRUDCore
             {
                 options.Conventions.AddPageRoute("/Login/Index", "");
             });
+
+            //var connection = @"Server=DESKTOP-7VHO3GN\SQLEXPRESS;Database=CRUDAPP;Trusted_connection=True";
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

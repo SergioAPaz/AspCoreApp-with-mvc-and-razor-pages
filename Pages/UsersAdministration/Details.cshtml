@@ -1,0 +1,38 @@
+﻿@page
+@model CRUDCore.Pages.UsersAdministration.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CtUsers</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CtUsers.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CtUsers.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CtUsers.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CtUsers.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CtUsers.RoleNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CtUsers.RoleNavigation.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.CtUsers.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
