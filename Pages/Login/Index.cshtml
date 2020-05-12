@@ -4,7 +4,7 @@
     ViewData["Title"] = "DoctorApp";
     @* Layout = "~/Views/Shared/_Layout.cshtml"; *@
 
-   
+
 }
 <head>
     <link href="~/css/Login.css" rel="stylesheet" />
@@ -14,22 +14,35 @@
 </head>
 
 <div class="wrapper fadeInDown">
-    <div id="formContent">
-        <!-- Tabs Titles -->
-        <!-- Icon -->
+    <div id="formContent" style="min-height:60px;background-color:#222">
+    
         <div class="fadeIn first">
-            <img src="~/images/user2.png" style="width:180px;height:auto;margin-top:25px" />
+            <h1 style="margin-top:30px">DoctorApp</h1>
+            <img src="~/images/user2.png" style="width:200px;height:auto;margin-top:50px;margin-bottom:50px" />
 
         </div>
+        <div class="container">
 
-        <!-- Login Form -->
-        <form method="post">
-            <input type="text" id="login" class="fadeIn second" name="txtUsuario" placeholder="Usuario">
-            <input type="text" id="password" class="fadeIn third" name="txtPassword" placeholder="Password">
-            <input type="submit" class="fadeIn fourth" value="Ingresar">
-        </form>
+            <!-- Login Form -->
+            <form method="post">
+                <label style="margin-bottom:10px">Credenciales:</label>
+                <input type="text" id="login" class="form-control" name="txtUsuario" placeholder="Usuario" style="max-width:100%;margin-bottom:10px">
+                <input type="text" id="password" class="form-control" name="txtPassword" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
+                <input type="submit" class="btn btn-primary btn-lg" value="Ingresar">
+                @if (Model.showListUsers==true)
+                {
+            <div>
+                <select asp-for="UsuarioSelected" class="form-control"   asp-items="@Model.CategoryItems">
+                    <option value="">Please Select</option>
+                </select>
+                <input type="submit" class="btn btn-primary" value="Ingresar Admin" style="margin-top:10px" />
+            </div>
+                }
+
+            </form>
 
 
+        </div>
     </div>
 </div>
 
