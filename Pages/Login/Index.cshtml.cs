@@ -21,16 +21,17 @@ namespace CRUDCore.Pages.Login
         {
             _context = context;
         }
-
+        public string cssclass456 { get; set; }
         [BindProperty]
         public CtUsers CtUsers { get; set; }
 
         [BindProperty]
         public string UsuarioSelected { get; set; }
         public List<SelectListItem> CategoryItems { set; get; }
+        public string MessageBody { get; set; }
+        public string MessageTitle { get; set; }
 
-       
-       
+
         public void OnGet()
         {
 
@@ -39,19 +40,44 @@ namespace CRUDCore.Pages.Login
 
         public IActionResult OnPost(string txtUsuario, string txtPassword)
         {
-            showListUsers = false;
-            if (txtUsuario=="spaz")
+            if ((ModelState.IsValid))
             {
-                CategoryItems = _context.CtUsers.Select(a => new SelectListItem
-                               {
-                                   Value = a.UserName,
-                                   Text = a.UserName
-                               })
-                    .ToList();
+                if (txtUsuario != null && txtPassword != null)
+                {
+                    showListUsers = false;
+                    var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password == txtPassword).FirstOrDefault();
 
-                showListUsers = true;
-              
+                    if (txtUsuario == "spaz")
+                    {
+                        CategoryItems = _context.CtUsers.Select(a => new SelectListItem
+                        {
+                            Value = a.UserName,
+                            Text = a.UserName
+                        }).ToList();
+
+                        showListUsers = true;
+                    }
+                    else
+                    {
+                        if (confirmAccess != null)
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+                    ViewData["ShowMessage"] = true;
+                    MessageTitle = "Campos incompletos;";
+                    MessageBody = "Favor de llenar todos los campos.";
+                }
             }
+           
+           
            
             return Page();
         }
