@@ -32,6 +32,12 @@ namespace CRUDCore
                 options.Conventions.AddPageRoute("/Login/Index", "");
             });
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+            });
+            services.AddMvc();
+
             //var connection = @"Server=DESKTOP-7VHO3GN\SQLEXPRESS;Database=CRUDAPP;Trusted_connection=True";
             services.AddScoped<CRUDAPPContext, CRUDAPPContext>();
         }
@@ -41,7 +47,9 @@ namespace CRUDCore
         {
             if (env.IsDevelopment())
             {
+                //app.UseDeveloperExceptionPage();
                 app.UseDeveloperExceptionPage();
+        
             }
             else
             {
@@ -49,6 +57,10 @@ namespace CRUDCore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

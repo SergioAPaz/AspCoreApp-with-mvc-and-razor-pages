@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CRUDCore.Models;
-
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace CRUDCore.Pages.Login
 {
@@ -31,14 +32,18 @@ namespace CRUDCore.Pages.Login
         public string MessageBody { get; set; }
         public string MessageTitle { get; set; }
 
-
+        [BindProperty]
+        public string txtUsuario { get; set; }
+        [BindProperty]
+        public string txtPassword { get; set; }
+     
         public void OnGet()
         {
 
         }
 
-
-        public IActionResult OnPost(string txtUsuario, string txtPassword)
+        [ValidateAntiForgeryToken]
+        public IActionResult OnPost()
         {
             if ((ModelState.IsValid))
             {
@@ -47,7 +52,7 @@ namespace CRUDCore.Pages.Login
                     showListUsers = false;
                     var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password == txtPassword).FirstOrDefault();
 
-                    if (txtUsuario == "spaz")
+                    if (txtUsuario == "spaz222")
                     {
                         CategoryItems = _context.CtUsers.Select(a => new SelectListItem
                         {
@@ -61,17 +66,18 @@ namespace CRUDCore.Pages.Login
                     {
                         if (confirmAccess != null)
                         {
-
+                            HttpContext.Session.SetString("UsuarioLogued", txtUsuario);
+                            return RedirectToPage("../Panel/Index");
                         }
                         else
                         {
-
+                            MessageTitle = "Error";
+                            MessageBody = "Usuario o contraseña incorrectos.";
                         }
                     }
                 }
                 else
                 {
-                    ViewData["ShowMessage"] = true;
                     MessageTitle = "Campos incompletos;";
                     MessageBody = "Favor de llenar todos los campos.";
                 }

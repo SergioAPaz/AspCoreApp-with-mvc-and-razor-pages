@@ -6,11 +6,15 @@
     <title>@ViewData["Title"] - CRUDCore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/Layout.css" rel="stylesheet" />
+    <link href="~/css/SideBar.css" rel="stylesheet" />
+
+
     @RenderSection("styles", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 navbar-fixed-top">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CRUDCore</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,30 +24,139 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item dropdown ml-auto">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                dfg
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a class="dropdown-item text-dark" asp-controller="UsersAdministration" asp-action="Index">Administrar ushuarios</a>
+                                <a class="dropdown-item text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Cerrar sesion</a>
+
+                            </div>
+
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    @*<div class="container" style="border:1px solid gray;border-radius:5px;background-color:white">
         <main role="main" class="pb-3">
-            @RenderBody()
+          
         </main>
+    </div>*@
+    <div class="" style="font-size:15px">
+        <nav id="sidebar" style="margin-top:70px;position:fixed; height: 100%; z-index: 1;top:0;left:0">
+
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                <li>
+                    <a href="../Home/Index">
+                        <i class="fas fa-question"></i>
+                        Inicio
+                    </a>
+                </li>
+                <li>
+
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="../Home/Index">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                @*<li>
+                        <a href="#">
+                            <i class="fas fa-briefcase"></i>
+                            About
+                        </a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-copy"></i>
+                            Pages
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>*@
+                <li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="../Home/Login/IndexLogin.cshtml">
+                        <i class="fas fa-question"></i>
+                        Configuracion
+                    </a>
+                </li>
+                <li>
+                    <a href="../Users/Index">
+                        <i class="fas fa-question"></i>
+                        Configuracion
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-briefcase"></i>
+                        About
+                    </a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Configuracion
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="../Users/Index">Administracion de usuarios</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+            </ul>
+
+
+        </nav>
+
+
+        @RenderBody()
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - CRUDCore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/SideBar.js"></script>
+
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

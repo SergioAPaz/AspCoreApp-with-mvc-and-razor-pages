@@ -12,9 +12,9 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
-@if (ViewData["ShowMessage"]== null)
+@if (@Model.MessageTitle == null)
 {
-     Model.cssclass456 = "fadeInDown";
+    Model.cssclass456 = "fadeInDown";
 }
 <div class="wrapper @Model.cssclass456">
     <div id="formContent" style="min-height:60px;background-color:#222">
@@ -30,7 +30,7 @@
             <form method="post">
                 <label style="margin-bottom:10px">Credenciales:</label>
                 <input type="text" id="login" class="form-control" name="txtUsuario" placeholder="Usuario" style="max-width:100%;margin-bottom:10px">
-                <input type="text" id="password" class="form-control" name="txtPassword" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
+                <input type="password" id="password"  class="form-control"  name="txtPassword" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
                 <input type="submit" class="btn btn-primary btn-lg" value="Ingresar">
                 @if (Model.showListUsers == true)
                 {
@@ -49,7 +49,7 @@
     </div>
 </div>
 
-@if (ViewData["ShowMessage"] != null)
+@if (@Model.MessageTitle != null)
 {
     <script>
         $(document).ready(function () {
