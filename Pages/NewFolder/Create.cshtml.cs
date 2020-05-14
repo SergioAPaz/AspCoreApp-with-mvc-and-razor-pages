@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CRUDCore.Models;
-using CRUDCore.Models.MyModels;
 
-namespace CRUDCore.Pages.UsersAdministration
+namespace CRUDCore.Pages.NewFolder
 {
     public class CreateModel : PageModel
     {
@@ -21,28 +20,22 @@ namespace CRUDCore.Pages.UsersAdministration
 
         public IActionResult OnGet()
         {
-        ViewData["Role"] = new SelectList(_context.CtRoles, "Id", "Role");
+        ViewData["Role"] = new SelectList(_context.CtRoles, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
         public CtUsers CtUsers { get; set; }
-        [BindProperty]
-        public string txtPassword { get; set; }
-
-
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            Encrypto Crypt = new Encrypto();
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            CtUsers.Password = Crypt.Encrypt(txtPassword);
+
             _context.CtUsers.Add(CtUsers);
             await _context.SaveChangesAsync();
 

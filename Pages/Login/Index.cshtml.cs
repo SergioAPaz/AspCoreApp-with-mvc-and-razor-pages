@@ -42,7 +42,6 @@ namespace CRUDCore.Pages.Login
 
         }
 
-        [ValidateAntiForgeryToken]
         public IActionResult OnPost()
         {
             if ((ModelState.IsValid))

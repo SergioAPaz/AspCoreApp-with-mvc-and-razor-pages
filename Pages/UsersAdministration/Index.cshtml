@@ -5,45 +5,69 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+  
 
-<h1>Index</h1>
+    <div class="alert alert-success">
+        <div class="row">
+            <div class="col-1" style="margin-left:-5px;margin-top:5px">
+                <a asp-controller="Panel" asp-action="Index" class="btn btn-outline-primary ">Back</a>
+            </div>
+            <div class="col-10">
+                <h3 style="margin-top:7px;margin-left:-20px"> Alta o modificacion de usuarios</h3>
+            </div>
+        </div>
+    </div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CtUsers[0].UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CtUsers[0].Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CtUsers[0].RoleNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.CtUsers) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleNavigation.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="form-group" style="margin-top:20px;padding:10px">
+
+
+    <table class="table table-hover table-bordered">
+        <thead style="background-color:#33b5e5;color:white">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CtUsers[0].UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CtUsers[0].Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CtUsers[0].RoleNavigation.Role)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CtUsers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleNavigation.Role)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <hr />
+
+    <div class="row">
+        <div class="col-12">
+            <a asp-page="Create" class="btn btn-primary m-1 float-right" style="margin-top:5px;margin-bottom:-5px">Agregar usuario</a>
+        </div>
+    </div>
+
+
+</div>
