@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using CRUDCore.Models;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using CRUDCore.Models.MyModels;
+
+
 
 namespace CRUDCore.Pages.Login
 {
@@ -44,12 +47,17 @@ namespace CRUDCore.Pages.Login
 
         public IActionResult OnPost()
         {
+            Encrypto Crypt = new Encrypto();
+
             if ((ModelState.IsValid))
             {
                 if (txtUsuario != null && txtPassword != null)
                 {
+
+
+                    string EncryptedPassword = Crypt.Encrypt(txtPassword);
                     showListUsers = false;
-                    var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password == txtPassword).FirstOrDefault();
+                    var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password  == EncryptedPassword).FirstOrDefault();
 
                     if (txtUsuario == "spaz222")
                     {

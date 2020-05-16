@@ -22,7 +22,7 @@ namespace CRUDCore.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-              optionsBuilder.UseSqlServer("Server=DESKTOP-7VHO3GN\\SQLEXPRESS;Database=CRUDAPP;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-7VHO3GN\\SQLEXPRESS;Database=CRUDAPP;Trusted_Connection=True;");
             }
         }
 
@@ -44,6 +44,8 @@ namespace CRUDCore.Models
                 entity.ToTable("CT_Users");
 
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CreationDate).HasColumnType("date");
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(150)
