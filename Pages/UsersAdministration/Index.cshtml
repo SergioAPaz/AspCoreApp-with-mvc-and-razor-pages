@@ -37,6 +37,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.CtUsers[0].RoleNavigation.Role)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CtUsers[0].LastAccess)
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -55,6 +58,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.RoleNavigation.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastAccess)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
