@@ -25,5 +25,7 @@ namespace CRUDCore.Pages.UsersAdministration
             CtUsers = await _context.CtUsers
                 .Include(c => c.RoleNavigation).ToListAsync();
         }
+
+      
     }
 }

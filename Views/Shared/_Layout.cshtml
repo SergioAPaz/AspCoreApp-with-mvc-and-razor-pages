@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,13 +34,33 @@
                         </li>
                         <li class="nav-item dropdown ml-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                dfg
+
+                                @{
+                                    try
+                                    {
+                                        @if (Context.Session.GetString("UsuarioLogued").ToString() != null)
+                                        {
+                                            @Context.Session.GetString("UsuarioLogued");
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+                                        Context.Response.Redirect("../Login");
+                                    }
+
+
+                                }
+
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                                 <a class="dropdown-item text-dark" asp-controller="UsersAdministration" asp-action="Index">Administrar ushuarios</a>
-                                <a class="dropdown-item text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Cerrar sesion</a>
+                                <a class="dropdown-item text-dark" asp-controller="Home" asp-action="LogOff">Cerrar sesion</a>
 
                             </div>
 
@@ -48,112 +71,112 @@
         </nav>
     </header>
     @*<div class="container" style="border:1px solid gray;border-radius:5px;background-color:white">
-        <main role="main" class="pb-3">
-          
-        </main>
-    </div>*@
-<div class="" style="font-size:15px">
-    <nav id="sidebar" style="margin-top:70px;position:fixed; height: 100%; z-index: 1;top:0;left:0">
+            <main role="main" class="pb-3">
+
+            </main>
+        </div>*@
+    <div class="" style="font-size:15px">
+        <nav id="sidebar" style="margin-top:70px;position:fixed; height: 100%; z-index: 1;top:0;left:0">
 
 
-        <ul class="list-unstyled components">
-            <li class="active">
-            <li>
-                <a href="../Home/Index">
-                    <i class="fas fa-question"></i>
-                    Inicio
-                </a>
-            </li>
-            <li>
+            <ul class="list-unstyled components">
+                <li class="active">
+                <li>
+                    <a href="../Home/Index">
+                        <i class="fas fa-question"></i>
+                        Inicio
+                    </a>
+                </li>
+                <li>
 
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="../Home/Index">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            @*<li>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="../Home/Index">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                @*<li>
+                        <a href="#">
+                            <i class="fas fa-briefcase"></i>
+                            About
+                        </a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-copy"></i>
+                            Pages
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>*@
+                <li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="../Home/Login/IndexLogin.cshtml">
+                        <i class="fas fa-question"></i>
+                        Configuracion
+                    </a>
+                </li>
+                <li>
+                    <a href="../Users/Index">
+                        <i class="fas fa-question"></i>
+                        Configuracion
+                    </a>
+                </li>
+
+
+                <li>
                     <a href="#">
                         <i class="fas fa-briefcase"></i>
                         About
                     </a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-copy"></i>
-                        Pages
+                        Configuracion
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="../Users/Index">Administracion de usuarios</a>
                         </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
+
                     </ul>
-                </li>*@
-            <li>
-                <a href="#">
-                    <i class="fas fa-image"></i>
-                    Portfolio
-                </a>
-            </li>
-            <li>
-                <a href="../Home/Login/IndexLogin.cshtml">
-                    <i class="fas fa-question"></i>
-                    Configuracion
-                </a>
-            </li>
-            <li>
-                <a href="../Users/Index">
-                    <i class="fas fa-question"></i>
-                    Configuracion
-                </a>
-            </li>
+                </li>
 
 
-            <li>
-                <a href="#">
-                    <i class="fas fa-briefcase"></i>
-                    About
-                </a>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fas fa-copy"></i>
-                    Configuracion
-                </a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="../Users/Index">Administracion de usuarios</a>
-                    </li>
-
-                </ul>
-            </li>
+            </ul>
 
 
-        </ul>
+        </nav>
 
 
-    </nav>
+        <div class="offset-2 container-fluid" style="max-width:77%;background-color:#fafafa;border:1px solid gray;border-radius:5px;margin-top:60px;padding-top:15px;border-radius:3px">
 
 
-    <div class="offset-2 container-fluid" style="max-width:77%;background-color:#fafafa;border:1px solid gray;border-radius:5px;margin-top:60px;padding-top:15px;border-radius:3px">
-
-      
 
 
-        @RenderBody()
+            @RenderBody()
+
+        </div>
+
 
     </div>
-    
-
-</div>
 
 
 

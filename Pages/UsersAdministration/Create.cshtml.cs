@@ -42,6 +42,7 @@ namespace CRUDCore.Pages.UsersAdministration
             {
                 return Page();
             }
+            CtUsers.CreationDate= Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"));
             CtUsers.Password = Crypt.Encrypt(txtPassword);
             _context.CtUsers.Add(CtUsers);
             await _context.SaveChangesAsync();

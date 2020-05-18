@@ -46,9 +46,9 @@ namespace CRUDCore.Models.MyModels.OriginalDB
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.CreationDate).HasColumnType("date");
+                entity.Property(e => e.CreationDate).HasColumnType("datetime");
 
-                entity.Property(e => e.LastAccess).HasColumnType("date");
+                entity.Property(e => e.LastAccess).HasColumnType("datetime");
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(150)

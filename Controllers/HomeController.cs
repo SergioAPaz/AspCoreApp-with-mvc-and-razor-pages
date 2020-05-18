@@ -33,5 +33,16 @@ namespace CRUDCore.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        public RedirectResult LogOff()
+        {
+            HttpContext.Session.Clear();
+
+
+            return Redirect("/Login/");   
+            
+        }
     }
 }
+    

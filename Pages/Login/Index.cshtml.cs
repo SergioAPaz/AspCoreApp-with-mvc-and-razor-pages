@@ -42,7 +42,7 @@ namespace CRUDCore.Pages.Login
      
         public void OnGet()
         {
-
+            string pepe="asd";
         }
 
         public IActionResult OnPost()
@@ -73,6 +73,11 @@ namespace CRUDCore.Pages.Login
                     {
                         if (confirmAccess != null)
                         {
+                            (from p in _context.CtUsers where p.Id == confirmAccess.Id select p).ToList()
+                                        .ForEach(x => x.LastAccess = Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")));
+
+                            _context.SaveChanges();
+
                             HttpContext.Session.SetString("UsuarioLogued", txtUsuario);
                             return RedirectToPage("../Panel/Index");
                         }
@@ -85,7 +90,7 @@ namespace CRUDCore.Pages.Login
                 }
                 else
                 {
-                    MessageTitle = "Campos incompletos;";
+                    MessageTitle = "Campos incompletos";
                     MessageBody = "Favor de llenar todos los campos.";
                 }
             }
@@ -93,6 +98,12 @@ namespace CRUDCore.Pages.Login
            
            
             return Page();
+        }
+
+
+        private bool CtUsersExists(int id)
+        {
+            return _context.CtUsers.Any(e => e.Id == id);
         }
     }
 }
