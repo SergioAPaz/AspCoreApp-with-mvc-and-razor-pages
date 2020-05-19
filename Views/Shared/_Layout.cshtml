@@ -9,15 +9,16 @@
     <title>@ViewData["Title"] - CRUDCore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/Layout.css" rel="stylesheet" />
     <link href="~/css/SideBar.css" rel="stylesheet" />
+
+    <link href="~/css/Layout.css" rel="stylesheet" />
 
 
     @RenderSection("styles", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 navbar-fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark  box-shadow mb-3 navbar-fixed-top">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CRUDCore</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -33,7 +34,7 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item dropdown ml-auto">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle2" href="#" style="background:transparent;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                 @{
                                     try
@@ -76,7 +77,7 @@
             </main>
         </div>*@
     <div class="" style="font-size:15px">
-        <nav id="sidebar" style="margin-top:70px;position:fixed; height: 100%; z-index: 1;top:0;left:0">
+        <nav id="sidebar" style="margin-top:58px;position:fixed; height: 100%; z-index: 1;top:0;left:0">
 
 
             <ul class="list-unstyled components">
@@ -149,11 +150,14 @@
                     </a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-copy"></i>
-                        Configuracion
+                        Gestión
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="../Users/Index">Administracion de usuarios</a>
+                            <a asp-controller="UsersAdministration" asp-action="Index">Usuarios</a>
+                        </li>
+                        <li>
+                            <a asp-controller="UsersAdministration" asp-action="Index">Doctores</a>
                         </li>
 
                     </ul>
@@ -166,7 +170,7 @@
         </nav>
 
 
-        <div class="offset-2 container-fluid" style="max-width:77%;background-color:#fafafa;border:1px solid gray;border-radius:5px;margin-top:60px;padding-top:15px;border-radius:3px">
+        <div class="offset-2 container-fluid estilo145" style="max-width:75%;background-color:#fafafa;border:1px solid gray;border-radius:5px;margin-top:60px;padding-top:10px;border-radius:3px">
 
 
 
@@ -177,9 +181,6 @@
 
 
     </div>
-
-
-
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

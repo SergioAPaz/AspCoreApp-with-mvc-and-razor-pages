@@ -1,11 +1,20 @@
 ﻿@page
 @model CRUDCore.Pages.UsersAdministration.IndexModel
 
+
+
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-  
+
+
+
+<div>
+
+
+
 
     <div class="alert alert-success">
         <div class="row">
@@ -19,67 +28,95 @@
     </div>
 
 
-<div class="form-group" style="margin-top:20px;padding:10px">
+    <div class="form-group" style="margin-top:20px;padding:10px">
 
 
-    <table class="table table-hover table-bordered">
-        <thead style="background-color:#33b5e5;color:white">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CtUsers[0].CreationDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CtUsers[0].UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CtUsers[0].Password)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CtUsers[0].RoleNavigation.Role)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CtUsers[0].LastAccess)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.CtUsers)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RoleNavigation.Role)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastAccess)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+        <table class="table table-hover table-bordered" id="example">
+            <thead style="background-color:#33b5e5;color:white">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CtUsers[0].CreationDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CtUsers[0].UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CtUsers[0].Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CtUsers[0].RoleNavigation.Role)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CtUsers[0].LastAccess)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CtUsers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleNavigation.Role)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastAccess)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
 
-    <hr />
+        <hr />
 
-    <div class="row">
-        <div class="col-12">
-            <a asp-page="Create" class="btn btn-primary m-1 float-right" style="margin-top:5px;margin-bottom:-5px">Agregar usuario</a>
+        <div class="row">
+            <div class="col-12">
+                <a asp-page="Create" class="btn btn-primary m-1 float-right" style="margin-top:5px;margin-bottom:-5px">Agregar usuario</a>
+            </div>
         </div>
+
+
     </div>
-
-
 </div>
+
+@section styles{
+
+    <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+}
+
+
+@section scripts{
+
+
+    <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+
+    </script>
+}
+

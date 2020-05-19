@@ -1,3 +1,44 @@
 ﻿body {
     background-color:white;
 }
+.panel2 {
+    color:#fafafa;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 9%, rgba(0,0,0,1) 27%, rgba(18,18,18,1) 52%);
+}
+.navbar {
+    height:60px
+}
+.navbar {
+    -webkit-box-shadow: 87px 8px 16px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 87px 8px 16px -8px rgba(0,0,0,0.75);
+    box-shadow: 87px 8px 16px -8px rgba(0,0,0,0.75);
+}
+
+.dropdown-toggle2::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
+
+@media (max-width:1930px) and (min-width:1910px) {
+    .estilo145 {
+        margin-left: 335px;
+    }
+}
+
+@media (max-width:1370px) and (min-width:1360px) {
+    .estilo145 {
+        margin-left: 270px;
+    }
+}​
