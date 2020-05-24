@@ -18,7 +18,8 @@ namespace CRUDCore.Models
         [Display(Name = "Ultimo acceso")]
         public DateTime? LastAccess { get; set; }
 
-
+        public string Especialidad { get; set; }
+        public long? NoCedula { get; set; }
 
         public virtual CtRoles RoleNavigation { get; set; }
     }

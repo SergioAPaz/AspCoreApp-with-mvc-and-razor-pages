@@ -11,6 +11,8 @@ namespace CRUDCore.Models.MyModels.OriginalDB
         public int? Role { get; set; }
         public DateTime? CreationDate { get; set; }
         public DateTime? LastAccess { get; set; }
+        public string Especialidad { get; set; }
+        public long? NoCedula { get; set; }
 
         public virtual CtRoles RoleNavigation { get; set; }
     }

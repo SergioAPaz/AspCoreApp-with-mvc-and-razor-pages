@@ -11,10 +11,10 @@
 
 
 
+<div id="contente" />
+
+
 <div>
-
-
-
 
     <div class="alert alert-success">
         <div class="row">
@@ -49,34 +49,46 @@
                     <th>
                         @Html.DisplayNameFor(model => model.CtUsers[0].LastAccess)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CtUsers[0].Especialidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CtUsers[0].NoCedula)
+                    </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.CtUsers)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreationDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Password)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RoleNavigation.Role)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastAccess)
-                        </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleNavigation.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastAccess)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Especialidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoCedula)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
@@ -96,8 +108,8 @@
 
 @section styles{
 
-    <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/af-2.3.5/b-1.6.2/b-flash-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/kt-2.5.2/r-2.2.5/rr-1.2.7/datatables.min.css" />
+    <link href="~/css/UserAdministration/Index.css" rel="stylesheet" />
 
 }
 
@@ -105,18 +117,27 @@
 @section scripts{
 
 
-    <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/af-2.3.5/b-1.6.2/b-flash-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/kt-2.5.2/r-2.2.5/rr-1.2.7/datatables.min.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
             $('#example').DataTable({
                 dom: 'Bfrtip',
+                colReorder: true,
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'print'                   
                 ]
             });
         });
-
     </script>
+
+
+    <script src="~/js/Users.js"></script>
 }
 
