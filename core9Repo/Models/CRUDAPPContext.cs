@@ -34,6 +34,8 @@ namespace CRUDCore.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+               
+
                 entity.Property(e => e.Role)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -45,11 +47,23 @@ namespace CRUDCore.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.Apellidos)
+                   .HasMaxLength(150)
+                   .IsUnicode(false);
+
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Nombres)
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Especialidad)
                    .HasMaxLength(150)
                    .IsUnicode(false);
+
+                entity.Property(e => e.ImgPath)
+                 .HasMaxLength(50)
+                 .IsUnicode(false);
 
                 entity.Property(e => e.LastAccess).HasColumnType("datetime");
 

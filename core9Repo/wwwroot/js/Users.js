@@ -1,14 +1,63 @@
-﻿var e = React.createElement;
+﻿import React, { Component } from 'react';
 
-class HelloWorld extends React.Component {
+import profile from "./data";
+
+
+
+class SkillDetail extends Component {
+
     render() {
-        return e(
-            "div",
-            null,
-            "Hello World"
+
+        return (
+
+            <div>
+
+                {
+
+                    profile.Skills.map((skill) => {
+
+                        return (
+
+                            <div>
+
+                                <h4>{skill.Area}</h4>
+
+                                <ul>
+
+                                    {
+
+                                        skill.SkillSet.map((skillDetail) => {
+
+                                            return (
+
+                                                <li>
+
+                                                    {skillDetail.Name}
+
+                                                </li>
+
+                                            );
+
+                                        })
+
+                                    }
+
+                                </ul>
+
+                            </div>
+
+                        );
+
+                    })
+
+                }
+
+            </div>
+
         );
+
     }
+
 }
 
-const containerElement = document.getElementById('content');
-ReactDOM.render(e(HelloWorld), containerElement);
+export default SkillDetail;
