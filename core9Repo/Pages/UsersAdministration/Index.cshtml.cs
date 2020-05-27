@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CRUDCore.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CRUDCore.Pages.UsersAdministration
 {
@@ -13,6 +14,8 @@ namespace CRUDCore.Pages.UsersAdministration
     {
         private readonly CRUDCore.Models.CRUDAPPContext _context;
 
+        [BindProperty]
+        public string search { get; set; }
         public IndexModel(CRUDCore.Models.CRUDAPPContext context)
         {
             _context = context;
@@ -26,6 +29,14 @@ namespace CRUDCore.Pages.UsersAdministration
                 .Include(c => c.RoleNavigation).ToListAsync();
         }
 
-      
+
+        public async Task<IActionResult> OnPostRequestInfo()
+        {
+            CtUsers = await _context.CtUsers
+             .Include(c => c.RoleNavigation).Where(x=> x.ImgPath != null).ToListAsync();
+            // return RedirectToPage(); redirecciona a pagina pero primero pasa por el get natural
+            return Page();
+        }
+
     }
 }

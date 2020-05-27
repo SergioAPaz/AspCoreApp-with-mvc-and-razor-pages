@@ -1,3 +1,7 @@
 ﻿.dataTables_wrapper .dt-buttons {
    margin-bottom:-45px
 }
+
+.e1:hover {
+    color: #007BFF;
+}
