@@ -124,7 +124,7 @@ span {
 
     #sidebar ul.components {
         padding: 20px 0;
-        border-bottom: 2px solid #fafafa;
+        /*border-bottom: 2px solid #fafafa;*/
     }
 
     #sidebar ul li a {

@@ -29,11 +29,13 @@ namespace CRUDCore.Pages.UsersAdministration
                 .Include(c => c.RoleNavigation).ToListAsync();
         }
 
-
-        public async Task<IActionResult> OnPostRequestInfo()
+        [BindProperty]
+        public string txtBusqueda { get; set; }
+        public async Task<IActionResult> OnPostRequestInfo(string txtBusqueda)
         {
-            CtUsers = await _context.CtUsers
-             .Include(c => c.RoleNavigation).Where(x=> x.ImgPath != null).ToListAsync();
+            CtUsers = await _context.CtUsers.Include(c => c.RoleNavigation).Where(x=> x.Nombres.Contains(txtBusqueda)).ToListAsync();
+
+
             // return RedirectToPage(); redirecciona a pagina pero primero pasa por el get natural
             return Page();
         }

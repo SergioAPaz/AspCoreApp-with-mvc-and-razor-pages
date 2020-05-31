@@ -6,12 +6,12 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row" style="margin-top:35px;padding:10px">
+<div class="row" style="margin-top:25px;padding:10px">
     <div class="col-12" style="margin-top:-20px">
         <div class="alert alert-success" style="margin-bottom:40px">
             <div class="row">
                 <div class="col-1" style="margin-left:-5px;margin-top:5px">
-                    <a asp-controller="Panel" asp-action="Index" class="btn btn-outline-primary ">Back</a>
+                    <a asp-controller="Panel" asp-action="Index" class="btn btn-outline-primary ">Atras</a>
                 </div>
                 <div class="col-10">
                     <h3 style="margin-top:7px;margin-left:-30px"> Alta o modificacion de usuarios</h3>
@@ -27,8 +27,8 @@
         <form method="post">
             <div class="form-group form-inline float-right">
                 <label style="margin-right:10px">Buscar:</label>
-                <input class="form-control" style="max-width:250px" asp-for="search" />
-                <button asp-page-handler="RequestInfo">Request Info</button>
+                <input class="form-control" style="max-width:250px" asp-for="txtBusqueda" />
+                <button asp-page-handler="RequestInfo" class="btn btn-outline-primary" style="margin-left:8px">Buscar</button>
 
             </div>
             </form>
@@ -37,15 +37,15 @@
 
     @foreach (var item in Model.CtUsers)
     {
-        <div class="col-2" style="border:1px solid gray;padding:6px;min-height:200px;margin:10px;overflow:hidden">
+        <div class="col-2 style156" style="border:1px solid #bdbdbd;padding:6px;min-height:200px;margin:10px;overflow:hidden;background-color:white;border-radius:5px">
             <div class="row">
                 <div class="col-12" style="text-align:center;margin-top:5px;margin-bottom:10px">
                     <img src="~/images/users/@item.ImgPath" alt="Sample Image" width="100px" height="auto" style="border-radius:10px" />
                     <br />
 
-                    <div class="row" style="margin-top:10px">
+                    <div class="row" style="margin-top:11px;background-color:#f7f7f7;padding-top:5px;border-top:1px solid #bdbdbd " >
                         <div class="col-6">
-                            <label style="margin-bottom:-4px">Nombre</label><br />
+                            <label style="margin-bottom: -4px">Nombre</label><br />
                             <span style="font-size:12px">@item.Nombres</span>    <br />
                             <label style="margin-top:5px;margin-bottom:-4px">Apellidos</label><br />
                             <span style="font-size:12px">@item.Apellidos</span>         <br />
@@ -55,15 +55,15 @@
 
                             <label style="margin-bottom:-4px">Rol</label><br />
                             <span style="font-size:12px"> @item.RoleNavigation.Role</span>   <br />
-                            <label style="margin-top:5px;margin-bottom:-4px">Especialidad</label><br />
+                            <label style="margin-top: 5px; margin-bottom: -4px">Especialidad</label><br />
                             <span style="font-size:12px">@item.Especialidad</span>
 
                         </div>
 
-                        <div class="col-12" style="margin-top:10px;background-color:#FFFFFF">
-                            <a asp-page="./Edit" asp-route-id="@item.Id" class="e1">Editar</a>
-                            <a asp-page="./Details" asp-route-id="@item.Id" class="e1">Detalles</a>
-                            <a asp-page="./Delete" asp-route-id="@item.Id" class="e1">Eliminar</a>
+                        <div class="col-12" style="margin-top:10px;background-color:#4B515D;height:44px;padding-top:6px;margin-bottom:-16px">
+                            <a asp-page="./Edit" asp-route-id="@item.Id" class=" btn btn-primary btn-sm">Editar</a>
+                            <a asp-page="./Details" asp-route-id="@item.Id" class=" btn btn-primary btn-sm">Detalles</a>
+                            <a asp-page="./Delete" asp-route-id="@item.Id" class=" btn btn-danger btn-sm">Eliminar</a>
                         </div>
                     </div>
 
@@ -80,13 +80,13 @@
 
 
 
-<div style="margin-bottom:35px">
+<div style="margin-bottom:35px;margin-top:15px">
 
     <div id="accordion">
 
         <div class="card">
             <div class="card-header">
-                <a class="card-link" data-toggle="collapse" href="#collapseOne" style="color:#898B8D">
+                <a class="card-link" data-toggle="collapse" href="#collapseOne" style="color:#898B8D;background-color:transparent">
                     Listado
                 </a>
             </div>
@@ -149,9 +149,9 @@
                                             @Html.DisplayFor(modelItem => item.NoCedula)
                                         </td>
                                         <td>
-                                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a> 
+                                            <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a> 
+                                            <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 }
