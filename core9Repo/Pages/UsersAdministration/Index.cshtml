@@ -18,8 +18,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
 
@@ -31,9 +29,9 @@
                 <button asp-page-handler="RequestInfo" class="btn btn-outline-primary" style="margin-left:8px">Buscar</button>
 
             </div>
-            </form>
+        </form>
 
-</div>
+    </div>
 
     @foreach (var item in Model.CtUsers)
     {
@@ -43,7 +41,7 @@
                     <img src="~/images/users/@item.ImgPath" alt="Sample Image" width="100px" height="auto" style="border-radius:10px" />
                     <br />
 
-                    <div class="row" style="margin-top:11px;background-color:#f7f7f7;padding-top:5px;border-top:1px solid #bdbdbd " >
+                    <div class="row" style="margin-top:11px;background-color:#f7f7f7;padding-top:5px;border-top:1px solid #bdbdbd ">
                         <div class="col-6">
                             <label style="margin-bottom: -4px">Nombre</label><br />
                             <span style="font-size:12px">@item.Nombres</span>    <br />
@@ -82,6 +80,13 @@
 
 <div style="margin-bottom:35px;margin-top:15px">
 
+
+    <div class="row" style="margin-top:15px;margin-bottom:15px">
+        <div class="col-12">
+            <a asp-page="Create" class="btn btn-primary m-1 float-right" style="margin-top:5px;margin-bottom:-5px">Agregar usuario</a>
+        </div>
+    </div>
+
     <div id="accordion">
 
         <div class="card">
@@ -96,7 +101,7 @@
                     <div class="form-group" style="margin-top:20px;padding:10px">
 
 
-                        <table class="table table-hover table-bordered" id="example">
+                        <table class="table table-hover table-bordered" id="example" style="text-align:center">
                             <thead style="background-color: #33b5e5; color: white ">
                                 <tr>
                                     <th>
@@ -105,9 +110,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.CtUsers[0].UserName)
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.CtUsers[0].Password)
-                                    </th>
+
                                     <th>
                                         @Html.DisplayNameFor(model => model.CtUsers[0].RoleNavigation.Role)
                                     </th>
@@ -120,7 +123,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.CtUsers[0].NoCedula)
                                     </th>
-                                    <th></th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -133,9 +136,7 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.UserName)
                                         </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Password)
-                                        </td>
+
                                         <td>
                                             @Html.DisplayFor(modelItem => item.RoleNavigation.Role)
                                         </td>
@@ -149,9 +150,9 @@
                                             @Html.DisplayFor(modelItem => item.NoCedula)
                                         </td>
                                         <td>
-                                            <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a> 
-                                            <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a> 
-                                            <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Delete</a>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                                            <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a>
+                                            <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
                                 }
@@ -161,11 +162,7 @@
 
                         <hr />
 
-                        <div class="row">
-                            <div class="col-12">
-                                <a asp-page="Create" class="btn btn-primary m-1 float-right" style="margin-top:5px;margin-bottom:-5px">Agregar usuario</a>
-                            </div>
-                        </div>
+                     
 
 
                     </div>
@@ -173,7 +170,7 @@
             </div>
         </div>
 
-       
+
 
     </div>
 
@@ -204,10 +201,11 @@
                 dom: 'Bfrtip',
                 colReorder: true,
                 buttons: [
-                    'excel',
-                    'csv',
-                    'pdf',
-                    'print'
+                    { extend: 'excel', className: 'btn1' },
+                    { extend: 'csv', className: 'btn2' }, 
+                    { extend: 'pdf', className: 'btn3' },
+                    { extend: 'print', className: 'btn4' }
+                   
                 ]
             });
         });

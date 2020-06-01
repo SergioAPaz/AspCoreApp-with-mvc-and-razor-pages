@@ -5,5 +5,92 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Reports</h1>
+
+<div class="row" style="margin-top:25px;padding:10px">
+    <div class="col-12" style="margin-top:-20px">
+        <div class="alert alert-success" style="margin-bottom:40px">
+            <div class="row">
+                <div class="col-1" style="margin-left:-5px;margin-top:5px">
+                    <a asp-controller="Panel" asp-action="Index" class="btn btn-outline-primary ">Atras</a>
+                </div>
+                <div class="col-10">
+                    <h3 style="margin-top:7px;margin-left:-30px"> Reportes</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">Usuarios</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="home" class="container tab-pane active">
+        <br>
+        <h3>HOME</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="menu1" class="container tab-pane fade">
+        <br>
+        <h3>Usuarios</h3>
+
+        @*<form method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="col-md-8" style="padding-top:10px;">
+                        <button asp-page-handler="Export">Export</button>
+                    </div>
+                </div>
+                <br />
+                <div id="dvData"></div>
+            </form>*@
+
+        <input type="button" onclick="exampleA();" value="Example A">
+
+
+
+
+    </div>
+    <div id="menu2" class="container tab-pane fade">
+        <br>
+        <h3>Menu 2</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+</div>
+
+
+@section scripts{
+
+
+
+
+    <script src="~/js/CSVExport.js"></script>
+    <script type="text/javascript">
+
+        function exampleA() {
+            /*PARA TESTEAR CONEXION A WEB API*/
+            $.getJSON("http://www.miapi.com/api/ctusers", function (data) {
+                console.log(data);
+                myObject = data;
+                var example = data;
+                var x = new CSVExport(example);
+                return false;
+            });
+        }
+
+    </script>
+
+}
+
 

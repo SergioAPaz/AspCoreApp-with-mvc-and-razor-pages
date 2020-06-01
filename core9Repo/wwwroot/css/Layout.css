@@ -10,9 +10,9 @@
     height:60px
 }
 .navbar {
-    -webkit-box-shadow: 87px 8px 16px -8px rgba(0,0,0,0.75);
-    -moz-box-shadow: 87px 8px 16px -8px rgba(0,0,0,0.75);
-    box-shadow: 87px 8px 16px -8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.75);
 }
 
 .dropdown-toggle2::after {

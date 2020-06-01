@@ -29,6 +29,15 @@ namespace MyApi
             services.AddControllers();
 
             services.AddScoped<CRUDAPPContext, CRUDAPPContext>();
+
+            /*AQUI*/
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi",
+                    builder => builder.WithOrigins("http://localhost:62673", "http://www.crudcorer9.com/")
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +51,8 @@ namespace MyApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            /*AQUI*/
+            app.UseCors("CorsApi");
 
             app.UseAuthorization();
 
@@ -49,6 +60,9 @@ namespace MyApi
             {
                 endpoints.MapControllers();
             });
+
+
+           
         }
     }
 }

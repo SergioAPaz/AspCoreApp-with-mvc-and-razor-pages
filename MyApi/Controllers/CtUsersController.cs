@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +13,7 @@ using MyApi.Models;
 
 namespace MyApi.Controllers
 {
+    [EnableCors("CorsApi")]
     [Route("api/[controller]")]
     [ApiController]
     public class CtUsersController : ControllerBase
@@ -105,5 +110,33 @@ namespace MyApi.Controllers
         {
             return _context.CtUsers.Any(e => e.Id == id);
         }
+
+
+
+        private bool GenerateExcelReport(int scheduleId)
+        {
+            return _context.CtUsers.Any(e => e.Id == scheduleId);
+        }
+
+
+
+        //[HttpGet]
+        //[Route("report/{scheduleId:int}")]
+        //public HttpResponseMessage DownloadReport(int scheduleId)
+        //{
+        //    var reportStream = GenerateExcelReport(scheduleId);
+        //    var result = Request.CreateResponse(HttpStatusCode.OK);
+
+        //    result.Content = new StreamContent(reportStream);
+        //    result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+        //    result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+        //    {
+        //        FileName = "Schedule Report.xlsx"
+        //    };
+
+        //    return result;
+        //}
+
+
     }
 }

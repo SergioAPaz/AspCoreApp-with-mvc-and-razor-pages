@@ -12,3 +12,20 @@
     -moz-box-shadow: 0px 35px 14px -33px rgba(0,0,0,0.75);
     box-shadow: 0px 35px 14px -33px rgba(0,0,0,0.75);
 }
+
+
+.btn1{
+    background-color:forestgreen;
+}
+
+.btn2 {
+    background-color: forestgreen;
+}
+
+.btn3 {
+    background-color: #C82333;
+}
+
+.btn4 {
+    background-color: gray;
+}
