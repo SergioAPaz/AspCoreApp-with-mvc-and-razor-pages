@@ -120,22 +120,22 @@ namespace MyApi.Controllers
 
 
 
-        //[HttpGet]
-        //[Route("report/{scheduleId:int}")]
-        //public HttpResponseMessage DownloadReport(int scheduleId)
-        //{
-        //    var reportStream = GenerateExcelReport(scheduleId);
-        //    var result = Request.CreateResponse(HttpStatusCode.OK);
 
-        //    result.Content = new StreamContent(reportStream);
-        //    result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-        //    result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-        //    {
-        //        FileName = "Schedule Report.xlsx"
-        //    };
 
-        //    return result;
-        //}
+        //https://localhost:5001/api/ctusers/GetUsersWF/2
+        [Route("[action]/{id}")]
+        [HttpGet]
+        public async Task<ActionResult<CtUsers>> GetUsersWF(int id)
+        {
+            var ctUsers = await _context.CtUsers.FindAsync(id);
+
+            if (ctUsers == null)
+            {
+                return NotFound();
+            }
+
+            return ctUsers;
+        }
 
 
     }
