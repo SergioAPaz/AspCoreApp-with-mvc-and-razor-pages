@@ -28,7 +28,7 @@ namespace MyApi.Controllers
 
         // GET: api/CtUsers
         [HttpGet]
-        [Authorize]//Solo usuarios autenticados
+        [Authorize]//Seguridad JWT activada, se deben proporcionar credenciales mediante json
         public async Task<ActionResult<IEnumerable<CtUsers>>> GetCtUsers()
         {
             return await _context.CtUsers.ToListAsync();

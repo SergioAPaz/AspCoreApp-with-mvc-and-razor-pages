@@ -18,13 +18,8 @@ namespace MyApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-
         private readonly IConfiguration configuration;
-
         private readonly CRUDAPPContext _context;
-       
-
-
 
         // TRAEMOS EL OBJETO DE CONFIGURACIÓN (appsettings.json)
         // MEDIANTE INYECCIÓN DE DEPENDENCIAS.
@@ -50,11 +45,9 @@ namespace MyApi.Controllers
             }
         }
 
-        // COMPROBAMOS SI EL USUARIO EXISTE EN LA BASE DE DATOS 
+        // VALIDA SI EL USUARIO EXISTE EN LA BASE DE DATOS 
         private async Task<CtUsers> AutenticarUsuarioAsync(string usuario, string password)
-        {
-          
-
+        {          
                 var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == usuario.ToLower() & x.Password == password).FirstOrDefault();
 
                 if (confirmAccess != null)
@@ -64,25 +57,12 @@ namespace MyApi.Controllers
                         // Id del Usuario en el Sistema de Información (BD)
                         Id = confirmAccess.Id,
                         UserName = confirmAccess.UserName
-
                     };
                 }
                 else
                 {
                     return null;
-                }
-
-            
-            // AQUÍ LA LÓGICA DE AUTENTICACIÓN //
-
-            // Supondremos que el Usuario existe en la Base de Datos.
-            // Retornamos un objeto del tipo UsuarioInfo, con toda
-            // la información del usuario necesaria para el Token.
-
-
-            // Supondremos que el Usuario NO existe en la Base de Datos.
-            // Retornamos NULL.
-            //return null;
+                }            
         }
 
         // GENERAMOS EL TOKEN CON LA INFORMACIÓN DEL USUARIO
@@ -121,7 +101,6 @@ namespace MyApi.Controllers
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(_Token);
-
 
         }
     }

@@ -41,6 +41,7 @@ namespace MyApi
             //    .AllowAnyHeader()
             //    .AllowAnyMethod());
             //});
+
             /*Allow any connection from any domain*/
             services.AddCors(options =>
             {
@@ -50,7 +51,9 @@ namespace MyApi
                 .AllowAnyMethod());
             });
 
-            // CONFIGURACIÓN DEL SERVICIO DE AUTENTICACIÓN JWT
+
+
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
