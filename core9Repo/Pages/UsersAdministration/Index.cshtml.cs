@@ -25,8 +25,7 @@ namespace CRUDCore.Pages.UsersAdministration
 
         public async Task OnGetAsync()
         {
-            CtUsers = await _context.CtUsers
-                .Include(c => c.RoleNavigation).ToListAsync();
+            CtUsers = await _context.CtUsers.Include(c => c.RoleNavigation).ToListAsync();
         }
 
         [BindProperty]

@@ -45,7 +45,16 @@ namespace CRUDCore.Pages.Login
             string pepe="asd";
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostLoginAPIConn()
+        {
+
+
+            return Page();
+        }
+
+
+
+            public IActionResult OnPostLoginDBConn()
         {
             Encrypto Crypt = new Encrypto();
 
@@ -53,12 +62,9 @@ namespace CRUDCore.Pages.Login
             {
                 if (txtUsuario != null && txtPassword != null)
                 {
-
-
                     string EncryptedPassword = Crypt.Encrypt(txtPassword);
                     showListUsers = false;
                     var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password  == EncryptedPassword).FirstOrDefault();
-
                     if (txtUsuario == "spaz222")
                     {
                         CategoryItems = _context.CtUsers.Select(a => new SelectListItem
@@ -94,9 +100,6 @@ namespace CRUDCore.Pages.Login
                     MessageBody = "Favor de llenar todos los campos.";
                 }
             }
-           
-           
-           
             return Page();
         }
 
