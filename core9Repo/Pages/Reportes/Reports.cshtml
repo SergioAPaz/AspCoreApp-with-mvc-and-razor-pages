@@ -24,7 +24,7 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+        <a class="nav-link active" data-toggle="tab" href="#home">Usuarios</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#menu1">Usuarios</a>
@@ -38,9 +38,31 @@
 <div class="tab-content">
     <div id="home" class="container tab-pane active">
         <br>
-        <h3>HOME</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h3>Reportes sobre usuarios:</h3>
+
+        <form method="post">
+          
+            <input type="submit" class="btn btn-primary btn-lg" value="Aceptar" asp-page-handler="Usuarios">
+          
+        </form>
+
+        <hr />
+
+        <div style="background-color:red">
+            @if (Model.UsersResponse == true)
+            {
+                @foreach (var item in Model.CtUsers)
+                {
+            <label>@item.Password.ToString();</label> 
+                }
+            }
+
+        </div>
+
     </div>
+
+
+
     <div id="menu1" class="container tab-pane fade">
         <br>
         <h3>Usuarios</h3>

@@ -14,41 +14,6 @@
 </head>
 
 
-<script>
-        function GetToken2() {
-             $.ajax({
-                    type: 'POST',
-                 //url: 'http://www.miapi.com/api/login',
-                 url:'https://localhost:5001/api/login',
-                 data: JSON.stringify({ "Usuario": "pazs", "Password": "3y5rg3otKg2CImarkIgFtA==" }),
-                    contentType: "application/json"
-                }).done(function (data, statusText, xhdr) {
-                    $("#token").text(data);
-                }).fail(function (xhdr, statusText, errorText) {
-                    $("#token").text(errorText);
-                });
-        }
-
-        function UseToken() {
-                    $.ajax({
-                        method: 'GET',
-                        //url: 'http://www.miapi.com/api/ctusers',
-                        url: 'https://localhost:5001/api/ctusers',
-                        beforeSend: function (xhdr) {
-                            xhdr.setRequestHeader(
-                               "Authorization", "Bearer " + $("#token").text());
-                        }
-                    }).done(function (data, statusText, xhdr) {
-                        $("#result").text(JSON.stringify(data));
-                    }).fail(function (xhdr, statusText, errorText) {
-                        $("#result").text(JSON.stringify(xhdr));
-                    });
-        }
-
-       
-</script>
-
-
 @if (@Model.MessageTitle == null)
 {
     Model.cssclass456 = "fadeInDown";
@@ -63,49 +28,22 @@
         </div>
         <div class="container">
 
-
-
-
             <!-- Login Form with direct connection to DB-->
-            @*<form method="post">
-            <label style="margin-bottom:10px">Credenciales:</label>
-            <input type="text" id="login" class="form-control" name="txtUsuario" placeholder="Usuario" style="max-width:100%;margin-bottom:10px">
-            <input type="password" id="password"  class="form-control"  name="txtPassword" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
-            <input type="submit" class="btn btn-primary btn-lg" value="Ingresar" asp-page-handler="LoginDBConn">
-            @if (Model.showListUsers == true)
-            {
-                <div>
-                    <select asp-for="UsuarioSelected" class="form-control" asp-items="@Model.CategoryItems" style="margin-top:10px">
-                        <option value="">Please Select</option>
-                    </select>
-                    <input type="submit" class="btn btn-primary" value="Ingresar Admin" style="margin-top:10px" />
-                </div>
-            }
-        </form>*@
-
-
-            <!-- Login Form with connection to API-->
-            @*<form method="post">*@
-            <label style="margin-bottom:10px">Credenciales:</label>
-            <input type="text" id="login" class="form-control" name="txtUsuario" placeholder="Usuario" style="max-width:100%;margin-bottom:10px">
-            <input type="password" id="password" class="form-control" name="txtPassword" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
-            @* <input type="submit" class="btn btn-primary btn-lg" value="Ingresar" asp-page-handler="LoginDBConn">*@
-            <input type="button" onclick="GetToken2()" class="btn btn-primary btn-lg" value="Ingresar2" />
-            <div id="token"></div>
-
-            <input type="button"  onclick="UseToken()" value="Use Token" />
-            <div id="result"></div>
-
-            @if (Model.showListUsers == true)
-            {
-                <div>
-                    <select asp-for="UsuarioSelected" class="form-control" asp-items="@Model.CategoryItems" style="margin-top:10px">
-                        <option value="">Please Select</option>
-                    </select>
-                    <input type="submit" class="btn btn-primary" value="Ingresar Admin" style="margin-top:10px" />
-                </div>
-            }
-            @*</form>*@
+            <form method="post">
+                <label style="margin-bottom:10px">Credenciales:</label>
+                <input type="text" id="login" class="form-control" name="txtUsuario" placeholder="Usuario" style="max-width:100%;margin-bottom:10px">
+                <input type="password" id="password" class="form-control" name="txtPassword" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
+                <input type="submit" class="btn btn-primary btn-lg" value="Ingresar" asp-page-handler="LoginDBConn">
+                @if (Model.showListUsers == true)
+                {
+                    <div>
+                        <select asp-for="UsuarioSelected" class="form-control" asp-items="@Model.CategoryItems" style="margin-top:10px">
+                            <option value="">Please Select</option>
+                        </select>
+                        <input type="submit" class="btn btn-primary" value="Ingresar Admin" style="margin-top:10px" />
+                    </div>
+                }
+            </form>
 
         </div>
     </div>
@@ -118,7 +56,6 @@
             $('#myModal').modal('show');
         });
     </script>
-
 
 }
 

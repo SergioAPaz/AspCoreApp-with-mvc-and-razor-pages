@@ -16,6 +16,7 @@ namespace CRUDCore.Pages.UsersAdministration
 
         [BindProperty]
         public string search { get; set; }
+
         public IndexModel(CRUDCore.Models.CRUDAPPContext context)
         {
             _context = context;
