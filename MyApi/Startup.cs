@@ -70,8 +70,12 @@ namespace MyApi
                         )
                     };
                 });
-
-
+             
+            //Para mostrar el json identado
+            services.AddMvc().AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.WriteIndented = true;
+                });
         }
 
 
@@ -90,7 +94,7 @@ namespace MyApi
             // DE USUARIOS AL PIPELINE DE ASP.NET CORE
             app.UseAuthentication();
 
-          
+
 
 
             app.UseRouting();
@@ -105,7 +109,7 @@ namespace MyApi
             });
 
 
-           
+
         }
     }
 }

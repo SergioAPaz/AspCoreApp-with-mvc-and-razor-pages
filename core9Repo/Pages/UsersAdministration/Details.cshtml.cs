@@ -27,8 +27,7 @@ namespace CRUDCore.Pages.UsersAdministration
                 return NotFound();
             }
 
-            CtUsers = await _context.CtUsers
-                .Include(c => c.RoleNavigation).FirstOrDefaultAsync(m => m.Id == id);
+            CtUsers = await _context.CtUsers.Include(c => c.RoleNavigation).FirstOrDefaultAsync(m => m.Id == id);
 
             if (CtUsers == null)
             {

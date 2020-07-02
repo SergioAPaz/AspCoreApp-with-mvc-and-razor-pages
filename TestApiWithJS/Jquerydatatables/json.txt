@@ -1,0 +1,14 @@
+
+   [ {
+      "id": 4,
+      "userName": "spaz1",
+      "password": "3y5rg3otKg2CImarkIgFtA==",
+      "role": 3,
+      "creationDate": "2020-06-26T22:52:08",
+      "lastAccess": "2020-06-27T22:10:52",
+      "especialidad": "NA",
+      "noCedula": null,
+      "roleNavigation": null
+    }
+
+  ]

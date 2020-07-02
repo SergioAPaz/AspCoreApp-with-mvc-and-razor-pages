@@ -11,9 +11,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MyApi.Controllers
 {
+
+    [Produces("application/json")]
     [EnableCors("CorsApi")]
     [Route("api/[controller]")]
     [ApiController]
@@ -34,18 +38,32 @@ namespace MyApi.Controllers
             return await _context.CtUsers.ToListAsync();
         }
 
+
+        // GET: api/UsersLists
+        [HttpGet()]
+        [Route("UsersList")]
+        public async Task<ActionResult<IEnumerable<CtUsers>>> GetUsersLists()
+        {
+
+            var ctUsers = await _context.CtUsers.ToListAsync();
+
+            return Ok(new { data = new List<object> { ctUsers } });
+        }
+
         // GET: api/CtUsers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CtUsers>> GetCtUsers(int id)
         {
             var ctUsers = await _context.CtUsers.FindAsync(id);
-
             if (ctUsers == null)
             {
                 return NotFound();
             }
 
-            return ctUsers;
+            //Para incluir data name al json result
+            return Ok(new { data = new List<object> { ctUsers } });
+
+            //return ctUsers;
         }
 
         // PUT: api/CtUsers/5
