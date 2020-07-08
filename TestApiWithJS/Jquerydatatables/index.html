@@ -1,75 +1,61 @@
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-    
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <table id="tableSwapi" class="table table-striped">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>userName</th>
-                <th>password</th>
-                <th>role</th>
-                <th>creationDate</th>
-                <th>lastAccess</th>
-                <th>especialidad</th>
-                <th>noCedula</th>
-                <th>roleNavigation</th>
-                
-            </tr>
-        </thead>
-      
-    </table>    
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>userName</th>
+          <th>password</th>
+          <th>role</th>
+          <th>creationDate</th>
+          <th>lastAccess</th>
+          <th>especialidad</th>
+          <th>noCedula</th>
+          <th>roleNavigation</th>
+        </tr>
+      </thead>
+    </table>
     <script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    
+
     <script>
-        $(document).ready(function () {
-          
-           
-
-$('#tableSwapi').DataTable( {
-    "ajax": {
-            "url": "http://www.miapi.com/api/ctusers/4",
-            "type": "GET",
-            "dataSrc": "data",
-        },                 
-        columns: [
-
-              {"data": "id" },
-              {"data": "userName" },
-              {"data": "password" },
-              {"data": "role" },
-              {"data": "creationDate" },
-              {"data": "lastAccess" },
-              {"data": "especialidad" },
-              {"data": "noCedula" },
-              {"data": "roleNavigation" },
- 
-                ]
-            }); 
-    }
-);
-
-
-
-
+      $(document).ready(function () {
+        $("#tableSwapi").DataTable({
+          ajax: {
+            url: "http://www.miapi.com/api/ctusers/4",
+            type: "GET",
+            dataSrc: "data",
+          },
+          columns: [
+            { data: "id" },
+            { data: "userName" },
+            { data: "password" },
+            { data: "role" },
+            { data: "creationDate" },
+            { data: "lastAccess" },
+            { data: "especialidad" },
+            { data: "noCedula" },
+            { data: "roleNavigation" },
+          ],
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
-
-

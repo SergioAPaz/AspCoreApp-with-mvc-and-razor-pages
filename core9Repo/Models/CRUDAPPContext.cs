@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using CRUDCore.Models;
 
 namespace CRUDCore.Models
 {
@@ -85,5 +86,7 @@ namespace CRUDCore.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<CRUDCore.Models.Patients> Clients { get; set; }
     }
 }

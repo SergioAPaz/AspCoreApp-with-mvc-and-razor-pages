@@ -39,6 +39,9 @@ namespace CRUDCore
 
             //var connection = @"Server=DESKTOP-7VHO3GN\SQLEXPRESS;Database=CRUDAPP;Trusted_connection=True";
             services.AddScoped<CRUDAPPContext, CRUDAPPContext>();
+
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
