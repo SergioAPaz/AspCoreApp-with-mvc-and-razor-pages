@@ -31,16 +31,16 @@
             <!-- Login Form with direct connection to DB-->
             <form method="post">
                 <label style="margin-bottom:10px">Credenciales:</label>
-                <input type="text" id="login" class="form-control" name="txtUsuario" placeholder="Usuario" style="max-width:100%;margin-bottom:10px">
-                <input type="password" id="password" class="form-control" name="txtPassword" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
+                <input type="text" id="login" class="form-control" name="txtUsuario" value="@ViewData["usuario"]" placeholder="Usuario" style="max-width:100%;margin-bottom:10px">
+                <input type="password" id="password" class="form-control" name="txtPassword" value="@ViewData["password"]" placeholder="Password" style="max-width:100%;margin-bottom:10px;">
                 <input type="submit" class="btn btn-primary btn-lg" value="Ingresar" asp-page-handler="LoginDBConn">
-                @if (Model.showListUsers == true)
+                @if (Model.showListUsers == true  )
                 {
                     <div>
                         <select asp-for="UsuarioSelected" class="form-control" asp-items="@Model.CategoryItems" style="margin-top:10px">
                             <option value="">Please Select</option>
                         </select>
-                        <input type="submit" class="btn btn-primary" value="Ingresar Admin" style="margin-top:10px" />
+                        <input type="submit" class="btn btn-primary" value="Ingresar Admin" style="margin-top:10px" asp-page-handler="LoginWAU" />
                     </div>
                 }
             </form>

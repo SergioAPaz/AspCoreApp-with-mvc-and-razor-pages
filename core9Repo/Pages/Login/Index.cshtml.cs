@@ -39,10 +39,10 @@ namespace CRUDCore.Pages.Login
         public string txtUsuario { get; set; }
         [BindProperty]
         public string txtPassword { get; set; }
-     
+
         public void OnGet()
         {
-            string pepe="asd";
+            string pepe = "asd";
         }
 
         public IActionResult OnPostLoginAPIConn()
@@ -54,7 +54,7 @@ namespace CRUDCore.Pages.Login
 
 
 
-            public IActionResult OnPostLoginDBConn()
+        public IActionResult OnPostLoginDBConn()
         {
             Encrypto Crypt = new Encrypto();
 
@@ -64,15 +64,17 @@ namespace CRUDCore.Pages.Login
                 {
                     string EncryptedPassword = Crypt.Encrypt(txtPassword);
                     showListUsers = false;
-                    var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password  == EncryptedPassword).FirstOrDefault();
-                    if (txtUsuario == "spaz222")
+                    var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password == EncryptedPassword).FirstOrDefault();
+                    if (txtUsuario == "spaz")
                     {
                         CategoryItems = _context.CtUsers.Select(a => new SelectListItem
                         {
+
                             Value = a.UserName,
                             Text = a.UserName
                         }).ToList();
-
+                        ViewData["usuario"] = txtUsuario;
+                        ViewData["password"] = txtPassword;
                         showListUsers = true;
                     }
                     else
@@ -92,6 +94,61 @@ namespace CRUDCore.Pages.Login
                             MessageTitle = "Error";
                             MessageBody = "Usuario o contraseña incorrectos.";
                         }
+                    }
+                }
+                else
+                {
+                    MessageTitle = "Campos incompletos";
+                    MessageBody = "Favor de llenar todos los campos.";
+                }
+            }
+            return Page();
+        }
+
+
+
+        public IActionResult OnPostLoginWAU()
+        {
+            Encrypto Crypt = new Encrypto();
+
+            if ((ModelState.IsValid))
+            {
+                if (txtUsuario != null && txtPassword != null)
+                {
+                    string EncryptedPassword = Crypt.Encrypt(txtPassword);
+                    showListUsers = false;
+                    var confirmAccess = _context.CtUsers.Where(x => x.UserName.ToLower() == txtUsuario.ToLower() & x.Password == EncryptedPassword).FirstOrDefault();
+                    if (txtUsuario == "spaz")
+                    {
+                        if (confirmAccess != null)
+                        {
+                            if (UsuarioSelected != null)
+                            {
+                                var SecondUser = _context.CtUsers.Where(x => x.UserName.ToLower() == UsuarioSelected.ToLower()).FirstOrDefault();
+                                (from p in _context.CtUsers where p.Id == SecondUser.Id select p).ToList()
+                                            .ForEach(x => x.LastAccess = Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")));
+
+                                _context.SaveChanges();
+
+                                HttpContext.Session.SetString("UsuarioLogued", UsuarioSelected);
+                                return RedirectToPage("../Panel/Index");
+                            }
+                            else
+                            {
+                                MessageTitle = "Error";
+                                MessageBody = "Usuario inexistente";
+                            }
+                           
+                        }
+                        else
+                        {
+                            MessageTitle = "Error";
+                            MessageBody = "Usuario o contraseña incorrectos.";
+                        }
+                    }
+                    else
+                    {
+                       
                     }
                 }
                 else
