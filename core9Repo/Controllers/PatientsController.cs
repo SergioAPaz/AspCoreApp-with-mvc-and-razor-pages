@@ -53,10 +53,14 @@ namespace CRUDCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date,ClientId,Names,LastNames,Phone,Rfc,Calle,Numero,Colonia,CP")] Patients patients)
+        public async Task<IActionResult> Create([Bind("Id,CreationDate,ClientId,Names,LastNames,Phone,Rfc,Calle,Numero,Colonia,CP,FamiliarPhone")] Patients patients)
         {
             if (ModelState.IsValid)
             {
+                patients.CreationDate = Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"));
+                string Milis = (DateTime.Now - new DateTime(2010, 01, 01)).TotalSeconds.ToString();
+                patients.ClientId = Convert.ToInt64(Milis.Substring((Milis.Length - 5), 5));
+
                 _context.Add(patients);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -85,7 +89,7 @@ namespace CRUDCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,ClientId,Names,LastNames,Phone,Rfc,Calle,Numero,Colonia,CP")] Patients patients)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,ClientId,Names,LastNames,Phone,Rfc,Calle,Numero,Colonia,CP,FamiliarPhone")] Patients patients)
         {
             if (id != patients.Id)
             {
@@ -148,5 +152,9 @@ namespace CRUDCore.Controllers
         {
             return _context.Clients.Any(e => e.Id == id);
         }
+
+
+     
+       
     }
 }
