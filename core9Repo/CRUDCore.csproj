@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200714051923_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200714051923_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200714052944_secondTable.cs" />
+    <Compile Remove="Migrations\20200714052944_secondTable.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Pages\Master\" />
     <Folder Include="wwwroot\images\users\" />
     <Folder Include="wwwroot\lib\Datatables\" />

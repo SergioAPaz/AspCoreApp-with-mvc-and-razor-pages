@@ -3,32 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CRUDCore.Migrations
 {
-    public partial class New_Mdl_Patients : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Clients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(nullable: true),
-                    ClientId = table.Column<long>(nullable: false),
-                    Names = table.Column<string>(nullable: true),
-                    LastNames = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
-                    Rfc = table.Column<string>(nullable: true),
-                    Calle = table.Column<string>(nullable: true),
-                    Numero = table.Column<string>(nullable: true),
-                    Colonia = table.Column<string>(nullable: true),
-                    CP = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "CT_Roles",
                 columns: table => new
@@ -40,6 +18,29 @@ namespace CRUDCore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CT_Roles", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Patients",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreationDate = table.Column<DateTime>(nullable: true),
+                    ClientId = table.Column<long>(nullable: false),
+                    Names = table.Column<string>(nullable: false),
+                    LastNames = table.Column<string>(nullable: false),
+                    Phone = table.Column<string>(nullable: false),
+                    Rfc = table.Column<string>(nullable: true),
+                    Calle = table.Column<string>(nullable: true),
+                    Numero = table.Column<string>(nullable: true),
+                    Colonia = table.Column<string>(nullable: true),
+                    CP = table.Column<string>(nullable: true),
+                    FamiliarPhone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Patients", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -79,10 +80,10 @@ namespace CRUDCore.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Clients");
+                name: "CT_Users");
 
             migrationBuilder.DropTable(
-                name: "CT_Users");
+                name: "Patients");
 
             migrationBuilder.DropTable(
                 name: "CT_Roles");

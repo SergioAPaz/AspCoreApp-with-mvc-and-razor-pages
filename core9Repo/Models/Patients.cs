@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -31,6 +32,7 @@ namespace CRUDCore.Models
         public string CP { get; set; }
         [Display(Name = "Telefono 2:")]
         public string FamiliarPhone { get; set; }
+       
 
 
     }

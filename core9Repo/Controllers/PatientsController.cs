@@ -21,7 +21,7 @@ namespace CRUDCore.Controllers
         // GET: Patients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Clients.ToListAsync());
+            return View(await _context.Patients.ToListAsync());
         }
 
         // GET: Patients/Details/5
@@ -32,7 +32,7 @@ namespace CRUDCore.Controllers
                 return NotFound();
             }
 
-            var patients = await _context.Clients
+            var patients = await _context.Patients
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (patients == null)
             {
@@ -76,7 +76,7 @@ namespace CRUDCore.Controllers
                 return NotFound();
             }
 
-            var patients = await _context.Clients.FindAsync(id);
+            var patients = await _context.Patients.FindAsync(id);
             if (patients == null)
             {
                 return NotFound();
@@ -127,7 +127,7 @@ namespace CRUDCore.Controllers
                 return NotFound();
             }
 
-            var patients = await _context.Clients
+            var patients = await _context.Patients
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (patients == null)
             {
@@ -142,15 +142,15 @@ namespace CRUDCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var patients = await _context.Clients.FindAsync(id);
-            _context.Clients.Remove(patients);
+            var patients = await _context.Patients.FindAsync(id);
+            _context.Patients.Remove(patients);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PatientsExists(int id)
         {
-            return _context.Clients.Any(e => e.Id == id);
+            return _context.Patients.Any(e => e.Id == id);
         }
 
 

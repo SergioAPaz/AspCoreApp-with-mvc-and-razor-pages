@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUDCore.Migrations
 {
     [DbContext(typeof(CRUDAPPContext))]
-    [Migration("20200711183828_ChangingNameOfFiueld")]
-    partial class ChangingNameOfFiueld
+    [Migration("20200714052119_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,7 +141,7 @@ namespace CRUDCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Patients");
                 });
 
             modelBuilder.Entity("CRUDCore.Models.CtUsers", b =>

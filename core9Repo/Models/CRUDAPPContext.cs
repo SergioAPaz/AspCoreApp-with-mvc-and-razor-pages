@@ -87,6 +87,7 @@ namespace CRUDCore.Models
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-        public DbSet<CRUDCore.Models.Patients> Clients { get; set; }
+        public DbSet<CRUDCore.Models.Patients> Patients { get; set; }
+        public DbSet<CRUDCore.Models.Appoiments> Appoiments { get; set; }
     }
 }

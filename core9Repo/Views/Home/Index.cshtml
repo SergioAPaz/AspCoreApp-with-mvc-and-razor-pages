@@ -1,4 +1,5 @@
-﻿@{
+﻿@*@model CRUDCore.Models.Appointments*@
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -15,13 +16,19 @@
             <div class="col-12" style="margin-top:10px;margin-bottom:10px">
                 <hr />
             </div>
-                
 
-            <div class="col-3">
+
+            <div class="col-4">
                 <label>Paciente:</label>
-                <input type="text" class="form-control" placeholder="nombre de paciente" />
+                @*<input type="text" class="form-control" placeholder="nombre de paciente" />*@
+
+                @if (ViewBag.NTList != null)
+                {
+                    @*@Html.DropDownListFor(model => model.PatientFullName, new SelectList(ViewBag.PatientsList, "Value", "Text"), "Sin seleccion", new { @class = "form-control", @style = "" })*@
+                }
+
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <label>Edad:</label>
                 <input type="text" class="form-control" placeholder="edad" />
             </div>

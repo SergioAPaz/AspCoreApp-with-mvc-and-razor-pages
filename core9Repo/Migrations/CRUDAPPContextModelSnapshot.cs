@@ -19,6 +19,30 @@ namespace CRUDCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CRUDCore.Models.Appoiments", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("ClientId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PatientLastNames")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatientNames")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Appoiments");
+                });
+
             modelBuilder.Entity("CRUDCore.Models.CtRoles", b =>
                 {
                     b.Property<int>("Id")
@@ -139,7 +163,7 @@ namespace CRUDCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Patients");
                 });
 
             modelBuilder.Entity("CRUDCore.Models.CtUsers", b =>

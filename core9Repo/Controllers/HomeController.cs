@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CRUDCore.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CRUDCore.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CRUDAPPContext _context;
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,6 +22,14 @@ namespace CRUDCore.Controllers
 
         public IActionResult Index()
         {
+            IEnumerable<SelectListItem> items = _context.Patients.Select(c => new SelectListItem
+            {
+                Value = c.Names,
+                Text = c.Names
+            });
+            ViewBag.PatientsList = items;
+
+
             return View();
         }
 
